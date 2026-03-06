@@ -19,16 +19,37 @@
   <style>
     *{
        font-family: "Geist", sans-serif;
-       background-color: rgb(201, 216, 211);
     }
   </style>
 
 
 
 </head>
-<body>
+<body class=" ">
   <main>
-    
+   <div class="border">
+    <div class="logo pt-48  mx-auto text-center items-center">
+      <img src="./assets/github-logo.png" class="mx-auto mb-4" alt="">
+      <h1 class="font-bold text-2xl">GitHub Issues Tracker</h1>
+      <p class="text-gray-400 text-[18px]">Sign in to manage your issues</p>
+    </div>
+    <div class="form pt-6">
+      <div class="card  w-full max-w-sm shrink-0 shadow-sm  mx-auto rounded-2xl">
+        <div class="card-body">
+          <fieldset class="fieldset">
+            <label class="label font-bold text-[16px]">Username</label>
+            <input id="user-name" type="" class="input rounded-2xl w-full outline-none   bg-base-300 "
+              value="admin" placeholder="Enter username" />
+            <label class="label font-bold text-[16px]">Password</label>
+            <input id="input-pass" type="password" class="input outline-none w-full rounded-2xl  bg-base-300 " value="admin123"
+              placeholder="Enter password" />
+            <!-- <div><a class="link link-hover">Forgot password?</a></div> -->
+            <button id="sign-btn" class="btn btn-primary mt-4 rounded-2xl">Sign In</button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+   </div>
   
 
 
