@@ -36,7 +36,7 @@
   <main>
 
     <!-- main card -->
-    <div class="w-full max-w-md border-own rounded-2xl shadow-lg p-8">
+    <div class="w-[520px]  max-w-xl border-own rounded-2xl shadow-lg p-8">
 
       <!-- logo section -->
       <div class="text-center mb-6">
@@ -49,22 +49,34 @@
         <fieldset class="space-y-3">
 
           <div>
-            <label class="font-bold text-[16px]">Username</label>
+            <label class="font-bold  text-[16px]">Username</label>
+            <br>
             <input id="user-name" class="input w-full rounded-2xl bg-base-300 outline-none" value="admin"
               placeholder="Enter username">
+              <p class="text-indigo-600">Default:admin</p>
           </div>
+          
 
           <div>
             <label class="font-bold text-[16px]">Password</label>
-            <input id="input-pass" type="password" class="input w-full rounded-2xl bg-base-300 outline-none"
+            <br>
+           <input id="input-pass" type="password" class="input w-full rounded-2xl bg-base-300 outline-none"
               value="admin123" placeholder="Enter password">
+              <p class="text-indigo-600">Default:admin123</p>
           </div>
+              
 
           <button id="sign-btn" class="btn btn-primary w-full rounded-2xl mt-4">
             Sign In
           </button>
 
         </fieldset>
+      </div>
+<br>
+
+      <hr class="text-gray-300">
+      <div>
+        
       </div>
 
     </div>

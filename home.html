@@ -4,8 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>home</title>
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  
+  <!-- tailwind & daisy -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <style>
+    * {
+      font-family: "Geist", sans-serif;
+    }
+  
+    .border-own {
+      border: 1px solid wheat;
+      box-shadow: 1px snow;
+    }
+  </style>
+
 </head>
-<body>
-  oky
+<body class="mx-auto w-11/12 pt-2.5">
+  <main>
+
+    <header>
+      <div class="flex justify-between">
+        <div class="left flex items-center gap-1">
+            <img src="./assets/github-logo.png" class=" mb-4 w-16" alt="">
+            <h1 class="font-bold text-2xl">GitHub Issues Tracker</h1>
+        </div>
+        <div class="right flex items-center gap-1">
+          <div>
+            <label class="input">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" required placeholder="Search Issues..." />
+            </label>
+          </div>
+          <button class="btn btn-active btn-primary">+ New Issue</button>
+
+        </div>
+      </div>
+
+    </header>
+  </main>
+
 </body>
 </html>
