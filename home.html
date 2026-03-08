@@ -35,7 +35,6 @@
 
 <body class="mx-auto w-11/12 pt-2.5 ">
   <main>
-
     <header class="bg-white ">
       <div class="flex justify-between">
         <div class="left flex items-center gap-1">
@@ -56,18 +55,15 @@
 
     </header>
 
-
     <section class="w-10/12 mx-auto h-[88px]  p-6 mt-16 mb-4 border">
-      <div id="buttons">
 
         <div id="buttons">
           <button onclick="loadIssues(this)" id="all-btn" class="btn btn-primary">All</button>
-          <button onclick="filterStatus('open',this)" id="open-btn" class="btn btn-outline">Open</button>
-          <button onclick="filterStatus('closed',this)" id="closed-btn" class="btn btn-outline">Closed</button>
+          <button onclick="filterStatus('open', this)" id="open-btn" class="btn btn-outline">Open</button>
+          <button onclick="filterStatus('closed', this)" id="closed-btn" class="btn btn-outline">Closed</button>
         </div>
 
     </section>
-
 
     <section class="w-10/12 mx-auto mt-4 bg-white">
       <div class="flex justify-between ">
@@ -91,13 +87,9 @@
       </div>
     </section>
 
-
 <div id="load-spinner" class="hidden text-center mt-6">
   <span class="loading loading-spinner loading-lg text-primary"></span>
 </div>
-
-
-
 
     <section class="issue">
       <div id="issue-container" class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 w-10/12 mx-auto gap-3 mt-6 items-stretch">
@@ -109,10 +101,9 @@
 
     </section>
 
-
-
   </main>
 
 </body>
 <script src="script.js"></script>
+<script src="login.js"></script>
 </html>

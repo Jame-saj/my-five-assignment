@@ -1,17 +1,25 @@
-// https://phi-lab-server.vercel.app/api/v1/lab/issues
-async function allButtons()
+// fetch data
+async function loadIssues()
 {
+  showLoading();
+const allBtn = document.getElementById('all-btn');
+  // const allBtn = btn || document.getElementById('all-btn');
+  setActiveButton(allBtn);
   const res = await fetch(
-    ' https://phi-lab-server.vercel.app/api/v1/lab/issues',
+    'https://phi-lab-server.vercel.app/api/v1/lab/issues',
   );
   const data = await res.json();
-  // console.log(data.data);
   displayIssue(data.data);
+  hideLoading();
 }
-function displayIssue(issues)
-{
+
+// display
+function displayIssue(issues) {
   const containerIssue = document.getElementById('issue-container');
+  const issueCount = document.getElementById('issue-count');
   containerIssue.innerHTML = '';
+  issueCount.innerText = issues.length + ' issues';
+
   issues.forEach(issue => {
     const priorityStatus =
       issue.priority === 'high'
@@ -30,33 +38,25 @@ function displayIssue(issues)
         ? `<img src="./assets/Open-Status.png" class="w-6">`
         : `<img src="./assets/Closed- Status .png" class="w-6">`
     }
-
     <span class="px-4 py-2 rounded-full text-sm ${priorityStatus}">
       ${issue.priority.toUpperCase()}
     </span>
   </div>
-
   <h3 class="font-semibold mt-2 mb-2">${issue.title}</h3>
-
   <p class="text-sm line-clamp-2 text-gray-500 mb-3">
     ${issue.description}
   </p>
-
   <p>${issue.labels}</p>
-
   <hr class="my-3 text-gray-300">
-
   <p>#${issue.id} by ${issue.author}</p>
   <p>${issue.createdAt}</p>
-
 </div>
 `;
-
     containerIssue.appendChild(div);
   });
 }
 
-// loading
+// spinner
 const loadingSpinner = document.getElementById('load-spinner');
 function showLoading()
 {
@@ -68,10 +68,32 @@ function hideLoading()
 {
   loadingSpinner.classList.add('hidden');
 }
+// open-close
+async function filterStatus(status, btn)
+{
+  showLoading();
+  setActiveButton(btn);
+  const res = await fetch(
+    'https://phi-lab-server.vercel.app/api/v1/lab/issues',
+  );
 
+  const data = await res.json();
+  const filtered = data.data.filter(issue => issue.status === status);
+  displayIssue(filtered);
+  hideLoading();
+}
 
+// button
+function setActiveButton(activeBtn) {
+  const allButtons = document.querySelectorAll('#buttons button');
+  allButtons.forEach(button => {
+    button.classList.remove('btn-primary');
+    button.classList.add('btn-outline');
+  });
 
+  activeBtn.classList.add('btn-primary');
+  activeBtn.classList.remove('btn-outline');
+}
 
-
-
-allButtons();
+// call
+loadIssues();
