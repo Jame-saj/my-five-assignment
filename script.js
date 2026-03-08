@@ -1,19 +1,16 @@
 // https://phi-lab-server.vercel.app/api/v1/lab/issues
-async function allButtons()
-{
+async function allButtons() {
   const res = await fetch(
     ' https://phi-lab-server.vercel.app/api/v1/lab/issues',
   );
   const data = await res.json();
   // console.log(data.data);
   displayIssue(data.data);
-  
 }
 function displayIssue(issues) {
   const containerIssue = document.getElementById('issue-container');
   containerIssue.innerHTML = '';
   issues.forEach(issue => {
-
     const priorityStatus =
       issue.priority === 'high'
         ? 'bg-red-100 text-red-600'
@@ -54,7 +51,6 @@ function displayIssue(issues) {
 `;
 
     containerIssue.appendChild(div);
-    
-   });
+  });
 }
 allButtons();
