@@ -1,5 +1,6 @@
 // https://phi-lab-server.vercel.app/api/v1/lab/issues
-async function allButtons() {
+async function allButtons()
+{
   const res = await fetch(
     ' https://phi-lab-server.vercel.app/api/v1/lab/issues',
   );
@@ -7,7 +8,8 @@ async function allButtons() {
   // console.log(data.data);
   displayIssue(data.data);
 }
-function displayIssue(issues) {
+function displayIssue(issues)
+{
   const containerIssue = document.getElementById('issue-container');
   containerIssue.innerHTML = '';
   issues.forEach(issue => {
@@ -53,4 +55,23 @@ function displayIssue(issues) {
     containerIssue.appendChild(div);
   });
 }
+
+// loading
+const loadingSpinner = document.getElementById('load-spinner');
+function showLoading()
+{
+  const containerIssue = document.getElementById('issue-container');
+  loadingSpinner.classList.remove('hidden');
+  containerIssue.innerHTML = '';
+}
+function hideLoading()
+{
+  loadingSpinner.classList.add('hidden');
+}
+
+
+
+
+
+
 allButtons();
