@@ -1,8 +1,16 @@
+const issueDetailsModal = document.getElementById('issue-details-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalStatus = document.getElementById('modal-status');
+const modalAuthor = document.getElementById('modal-author');
+const modalAuthor2 = document.getElementById('modal-author2');
+const modalDate = document.getElementById('modal-date');
+const modalDescription = document.getElementById('modal-description');
+const modalPriority = document.getElementById('modal-priority');
+
 // fetch data
-async function loadIssues()
-{
+async function loadIssues() {
   showLoading();
-const allBtn = document.getElementById('all-btn');
+  const allBtn = document.getElementById('all-btn');
   // const allBtn = btn || document.getElementById('all-btn');
   setActiveButton(allBtn);
   const res = await fetch(
@@ -42,10 +50,14 @@ function displayIssue(issues) {
       ${issue.priority.toUpperCase()}
     </span>
   </div>
-  <h3 class="font-semibold mt-2 mb-2">${issue.title}</h3>
+  <h3 onclick="openIssueModal(${issue.id})"
+class="font-semibold mt-2 mb-2 cursor-pointer hover:text-blue-600">
+${issue.title}
+</h3>
   <p class="text-sm line-clamp-2 text-gray-500 mb-3">
     ${issue.description}
   </p>
+
   <p>${issue.labels}</p>
   <hr class="my-3 text-gray-300">
   <p>#${issue.id} by ${issue.author}</p>
@@ -58,19 +70,16 @@ function displayIssue(issues) {
 
 // spinner
 const loadingSpinner = document.getElementById('load-spinner');
-function showLoading()
-{
+function showLoading() {
   const containerIssue = document.getElementById('issue-container');
   loadingSpinner.classList.remove('hidden');
   containerIssue.innerHTML = '';
 }
-function hideLoading()
-{
+function hideLoading() {
   loadingSpinner.classList.add('hidden');
 }
 // open-close
-async function filterStatus(status, btn)
-{
+async function filterStatus(status, btn) {
   showLoading();
   setActiveButton(btn);
   const res = await fetch(
@@ -93,6 +102,26 @@ function setActiveButton(activeBtn) {
 
   activeBtn.classList.add('btn-primary');
   activeBtn.classList.remove('btn-outline');
+}
+///////modal
+async function openIssueModal(issueId) {
+  const res = await fetch(
+    'https://phi-lab-server.vercel.app/api/v1/lab/issues',
+  );
+
+  const data = await res.json();
+
+  const issue = data.data.find(item => item.id === issueId);
+
+  modalTitle.innerText = issue.title;
+  modalStatus.innerText = issue.status.toUpperCase();
+  modalAuthor.innerText = issue.author;
+  modalAuthor2.innerText = issue.author;
+  modalDate.innerText = issue.createdAt;
+  modalDescription.innerText = issue.description;
+  modalPriority.innerText = issue.priority.toUpperCase();
+
+  issueDetailsModal.showModal();
 }
 
 // call
