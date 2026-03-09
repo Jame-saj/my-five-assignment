@@ -109,6 +109,14 @@ async function openIssueModal(issueId) {
   const issue = data.data.find(item => item.id === issueId);
   modalTitle.innerText = issue.title;
   modalStatus.innerText = issue.status.toUpperCase();
+   if (issue.status === 'open') {
+     modalStatus.classList.remove('bg-purple-500');
+     modalStatus.classList.add('bg-green-500');
+   } else if (issue.status === 'closed') {
+     modalStatus.classList.remove('bg-green-500');
+     modalStatus.classList.add('bg-purple-500');
+   }
+  
   modalAuthor.innerText = issue.author;
   modalAssign.innerText = issue.author;
   modalDate.innerText = issue.createdAt;
