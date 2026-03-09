@@ -34,10 +34,15 @@ function displayIssue(issues) {
         : issue.priority === 'medium'
           ? 'bg-orange-100 text-orange-600'
           : 'bg-gray-100 text-gray-500';
+    
+    const borderStatus =
+      issue.status === 'open'
+        ? 'border-t-4 border-green-500'
+        : 'border-t-4 border-purple-500';
 
     const div = document.createElement('div');
     div.innerHTML = `
-         <div class="p-4 border rounded-lg shadow bg-white h-full flex flex-col justify-between">
+         <div class="p-4 border rounded-lg shadow bg-white h-full flex flex-col justify-between ${borderStatus}">
 
   <div class="issue-check flex justify-between items-center mb-2">
     ${
