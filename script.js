@@ -2,7 +2,7 @@ const issueDetailsModal = document.getElementById('issue-details-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalStatus = document.getElementById('modal-status');
 const modalAuthor = document.getElementById('modal-author');
-const modalAuthor2 = document.getElementById('modal-author2');
+const modalAssign = document.getElementById('assign');
 const modalDate = document.getElementById('modal-date');
 const modalDescription = document.getElementById('modal-description');
 const modalPriority = document.getElementById('modal-priority');
@@ -27,7 +27,6 @@ function displayIssue(issues) {
   const issueCount = document.getElementById('issue-count');
   containerIssue.innerHTML = '';
   issueCount.innerText = issues.length + ' issues';
-
   issues.forEach(issue => {
     const priorityStatus =
       issue.priority === 'high'
@@ -85,7 +84,6 @@ async function filterStatus(status, btn) {
   const res = await fetch(
     'https://phi-lab-server.vercel.app/api/v1/lab/issues',
   );
-
   const data = await res.json();
   const filtered = data.data.filter(issue => issue.status === status);
   displayIssue(filtered);
@@ -99,7 +97,6 @@ function setActiveButton(activeBtn) {
     button.classList.remove('btn-primary');
     button.classList.add('btn-outline');
   });
-
   activeBtn.classList.add('btn-primary');
   activeBtn.classList.remove('btn-outline');
 }
@@ -108,19 +105,15 @@ async function openIssueModal(issueId) {
   const res = await fetch(
     'https://phi-lab-server.vercel.app/api/v1/lab/issues',
   );
-
   const data = await res.json();
-
   const issue = data.data.find(item => item.id === issueId);
-
   modalTitle.innerText = issue.title;
   modalStatus.innerText = issue.status.toUpperCase();
   modalAuthor.innerText = issue.author;
-  modalAuthor2.innerText = issue.author;
+  modalAssign.innerText = issue.author;
   modalDate.innerText = issue.createdAt;
   modalDescription.innerText = issue.description;
   modalPriority.innerText = issue.priority.toUpperCase();
-
   issueDetailsModal.showModal();
 }
 
